@@ -1,0 +1,16 @@
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\bin\Debug\netstandard2.1\PZCheeseria.Common.deps.json
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\bin\Debug\netstandard2.1\PZCheeseria.Common.dll
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\bin\Debug\netstandard2.1\PZCheeseria.Common.pdb
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.csprojAssemblyReference.cache
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.AssemblyInfoInputs.cache
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.AssemblyInfo.cs
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.dll
+C:\TestProjects\PZCheeseria\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.pdb
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\bin\Debug\netstandard2.1\PZCheeseria.Common.deps.json
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\bin\Debug\netstandard2.1\PZCheeseria.Common.dll
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\bin\Debug\netstandard2.1\PZCheeseria.Common.pdb
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.csprojAssemblyReference.cache
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.AssemblyInfoInputs.cache
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.AssemblyInfo.cs
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.dll
+C:\Programming\pzcheeseriadotnet\PZCheeseria.Common\obj\Debug\netstandard2.1\PZCheeseria.Common.pdb

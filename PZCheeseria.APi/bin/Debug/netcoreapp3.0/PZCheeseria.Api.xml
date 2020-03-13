@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PZCheeseria.Api</name>
+    </assembly>
+    <members>
+        <member name="M:PZCheeseria.Api.Controllers.CheesesController.Get">
+            <summary>
+            Get all cheeses
+            </summary>
+        </member>
+    </members>
+</doc>
