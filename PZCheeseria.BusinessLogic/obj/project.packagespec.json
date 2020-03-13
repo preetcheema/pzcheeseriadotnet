@@ -18,7 +18,11 @@
     },
     "frameworks": {
       "netstandard2.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "C:\\Programming\\pzcheeseriadotnet\\PZCheeseria.Persistence\\PZCheeseria.Persistence.csproj": {
+            "projectPath": "C:\\Programming\\pzcheeseriadotnet\\PZCheeseria.Persistence\\PZCheeseria.Persistence.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
@@ -29,6 +33,12 @@
   },
   "frameworks": {
     "netstandard2.1": {
+      "dependencies": {
+        "MediatR": {
+          "target": "Package",
+          "version": "[8.0.1, )"
+        }
+      },
       "imports": [
         "net461",
         "net462",
@@ -44,7 +54,7 @@
           "privateAssets": "all"
         }
       },
-      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
     }
   }
 }
