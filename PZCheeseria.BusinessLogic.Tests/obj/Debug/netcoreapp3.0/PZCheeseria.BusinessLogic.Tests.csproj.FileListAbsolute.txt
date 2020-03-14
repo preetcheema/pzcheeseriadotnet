@@ -146,3 +146,4 @@ C:\Programming\pzcheeseriadotnet\PZCheeseria.BusinessLogic.Tests\obj\Debug\netco
 C:\Programming\pzcheeseriadotnet\PZCheeseria.BusinessLogic.Tests\obj\Debug\netcoreapp3.0\PZCheeseria.BusinessLogic.Tests.csproj.CopyComplete
 C:\Programming\pzcheeseriadotnet\PZCheeseria.BusinessLogic.Tests\obj\Debug\netcoreapp3.0\PZCheeseria.BusinessLogic.Tests.dll
 C:\Programming\pzcheeseriadotnet\PZCheeseria.BusinessLogic.Tests\obj\Debug\netcoreapp3.0\PZCheeseria.BusinessLogic.Tests.pdb
+C:\Programming\pzcheeseriadotnet\PZCheeseria.BusinessLogic.Tests\bin\Debug\netcoreapp3.0\FluentValidation.dll

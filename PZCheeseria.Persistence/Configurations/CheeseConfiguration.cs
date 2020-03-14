@@ -12,9 +12,9 @@ namespace PZCheeseria.Persistence.Configurations
             builder.Property(m => m.PricePerKilo)
                 .IsRequired();
             builder.Property(m => m.ImageName)
-                .IsRequired();
+                .IsRequired().HasMaxLength(100);
             builder.Property(m => m.Description).IsRequired().HasMaxLength(1000);
-            builder.Property(m => m.Name).IsRequired();
+            builder.Property(m => m.Name).IsRequired().HasMaxLength(100);
             //    builder.Property(m => m.Colour).IsRequired();
             builder.HasOne(m => m.Colour);
             builder.Property(m => m.CreatedOn).IsRequired();

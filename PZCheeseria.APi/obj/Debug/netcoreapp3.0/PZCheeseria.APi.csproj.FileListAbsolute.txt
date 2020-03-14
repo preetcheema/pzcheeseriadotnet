@@ -158,3 +158,4 @@ C:\Programming\pzcheeseriadotnet\PZCheeseria.APi\bin\Debug\netcoreapp3.0\PZChees
 C:\Programming\pzcheeseriadotnet\PZCheeseria.APi\obj\Debug\netcoreapp3.0\PZCheeseria.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Programming\pzcheeseriadotnet\PZCheeseria.APi\obj\Debug\netcoreapp3.0\PZCheeseria.Api.csproj.CopyComplete
 C:\Programming\pzcheeseriadotnet\PZCheeseria.APi\obj\Debug\netcoreapp3.0\PZCheeseria.Api.xml
+C:\Programming\pzcheeseriadotnet\PZCheeseria.APi\bin\Debug\netcoreapp3.0\FluentValidation.dll

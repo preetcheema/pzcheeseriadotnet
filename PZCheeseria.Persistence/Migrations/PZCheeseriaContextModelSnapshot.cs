@@ -39,11 +39,13 @@ namespace PZCheeseria.Persistence.Migrations
 
                     b.Property<string>("ImageName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<decimal>("PricePerKilo")
                         .HasColumnType("decimal(18,2)");
