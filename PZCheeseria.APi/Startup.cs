@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PZCheeseria.Api.Configuration;
 using PZCheeseria.Api.Infrastructure;
+using PZCheeseria.Api.Infrastructure.Middleware;
 using PZCheeseria.BusinessLogic.Cheeses.Queries;
 using PZCheeseria.Common;
 using PZCheeseria.Infrastructure;
@@ -78,7 +79,7 @@ namespace PZCheeseria.Api
                 app.UseHttpsRedirection();
 
             }
-
+            app.UseApiExceptionMiddleware();
             app.UseStaticFiles( new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Resources")),RequestPath = "/Resources",

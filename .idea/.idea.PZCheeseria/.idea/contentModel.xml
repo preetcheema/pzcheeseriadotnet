@@ -19,8 +19,13 @@
         </e>
         <e p="Infrastructure" t="Include">
           <e p="ConfigurationServiceExtension.cs" t="Include" />
+          <e p="Middleware" t="Include">
+            <e p="ApiExceptionMiddleware.cs" t="Include" />
+            <e p="UseApiExceptionMiddlewareExtensions.cs" t="Include" />
+          </e>
         </e>
         <e p="Models" t="Include">
+          <e p="AddCheeseApiModel.cs" t="Include" />
           <e p="CheeseApiModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -42,7 +47,6 @@
             <e p="BethmaleDesPyrenees.jpg" t="Include" />
             <e p="blueCastello.jpg" t="Include" />
             <e p="Brie.jpg" t="Include" />
-            <e p="powershell.JPG" t="Include" />
           </e>
         </e>
         <e p="Startup.cs" t="Include" />
@@ -83,6 +87,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cheeses" t="Include">
           <e p="Commands" t="Include">
+            <e p="WhenCheeseItemIsAddedWithNoName.cs" t="Include" />
             <e p="WhenValidCheeseItemIsAdded.cs" t="Include" />
           </e>
           <e p="Queries" t="Include">
@@ -92,7 +97,7 @@
           </e>
         </e>
         <e p="Infrastructure" t="Include">
-          <e p="class.cs" t="Include" />
+          <e p="FakeDatetimeProvider.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

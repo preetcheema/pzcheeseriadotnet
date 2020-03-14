@@ -9,5 +9,22 @@
             Get all cheeses
             </summary>
         </member>
+        <member name="M:PZCheeseria.Api.Controllers.CheesesController.ValidateFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            This method validates file. In Production, it should be doing lot more such as checking file extensions,
+            virus scanning.
+            If given time, I would like to add functional approach to it and return ExceptionResult or the file and let caller decide what to do
+            </summary>
+            <param name="file"></param>
+            <exception cref="T:PZCheeseria.BusinessLogic.Exceptions.UnProcessableEntityException"></exception>
+        </member>
+        <member name="M:PZCheeseria.Api.Infrastructure.Middleware.ApiExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+             <remarks>
+            Currently only interpreting UnProcessableEntityException
+             we can extend it to interpret combination of request type and exception and return appropriate status code
+             for example, if the exception caught is EntityNotFoundException and request type is Get then we can return NotFound
+             but if request type is Post, we can return BadRequest with appropriate details
+             </remarks>
+        </member>
     </members>
 </doc>

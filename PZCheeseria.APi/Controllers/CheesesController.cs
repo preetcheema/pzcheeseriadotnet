@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 using PZCheeseria.Api.Models;
+using PZCheeseria.BusinessLogic.Cheeses.Commands;
 using PZCheeseria.BusinessLogic.Cheeses.Queries;
+using PZCheeseria.BusinessLogic.Exceptions;
 
 namespace PZCheeseria.Api.Controllers
 {
@@ -36,45 +38,58 @@ namespace PZCheeseria.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromForm]AddCheeseModel model)
+        public async Task<ActionResult> Post([FromForm] AddCheeseApiModel model)
         {
-            try
+            //this could be built into a global filter
+            if (model == null)
             {
-                var file = model.Image;
-                var folderName = Path.Combine("Resources", "images");
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-                if (file.Length > 0)
-                {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim().ToString();
-                   
-                    var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(folderName, fileName);
- 
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
- 
-                    return Ok(new { dbPath });
-                }
-                else
-                {
-                    return BadRequest();
-                }
+                return BadRequest();
             }
-            catch (Exception ex)
+
+            var file = model.Image;
+            var folderName = Path.Combine("Resources", "images");
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+            ValidateFile(file);
+
+            var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim().ToString();
+
+            var command = model.ToAddCheeseCommand();
+            await _mediator.Send(command);
+
+            var fullPath = Path.Combine(pathToSave, fileName);
+            var dbPath = Path.Combine(folderName, fileName);
+
+            using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-                return Problem("Could not add record");
+                file.CopyTo(stream);
             }
+
+            return Ok();
         }
 
-        public class AddCheeseModel
+        /// <summary>
+        /// This method validates file. In Production, it should be doing lot more such as checking file extensions,
+        /// virus scanning.
+        /// If given time, I would like to add functional approach to it and return ExceptionResult or the file and let caller decide what to do
+        /// </summary>
+        /// <param name="file"></param>
+        /// <exception cref="UnProcessableEntityException"></exception>
+        private void ValidateFile(IFormFile file)
         {
-            public string Name { get; set; }
-            public string Description { get; set; }
-            public decimal PricePerKilo { get; set; }
-            public string Colour { get; set; }
-            public IFormFile Image { get; set; }
+            if (file.Length == 0)
+            {
+                throw new UnProcessableEntityException("Please see Errors and Property Errors for more information")
+                {
+                    ModelStateErrors = new[]
+                    {
+                        new ModelStateError
+                        {
+                            PropertyName = nameof(AddCheeseApiModel.Image),
+                            Error = "Must provide an image file"
+                        }
+                    }
+                };
+            }
         }
     }
 }
