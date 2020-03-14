@@ -7,7 +7,7 @@ namespace PZCheeseria.BusinessLogic.Tests
     public class TestBaseFixture : IDisposable
     {
         public PZCheeseriaContext Context { get; set; }
-        public DateTime FixedDateTime => new DateTime(2020, 3, 14);
+        protected DateTime FixedDateTime => new DateTime(2020, 3, 14);
 
         public TestBaseFixture()
         {

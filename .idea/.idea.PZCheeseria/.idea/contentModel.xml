@@ -53,6 +53,8 @@
         <e p="Cheeses" t="Include">
           <e p="Commands" t="Include">
             <e p="AddCheeseCommand.cs" t="Include" />
+            <e p="AddCheeseCommandHandler.cs" t="Include" />
+            <e p="AddCheeseCommandValidator.cs" t="Include" />
           </e>
           <e p="Queries" t="Include">
             <e p="CheeseModel.cs" t="Include" />
@@ -80,11 +82,17 @@
       <e p="PZCheeseria.BusinessLogic.Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cheeses" t="Include">
+          <e p="Commands" t="Include">
+            <e p="WhenValidCheeseItemIsAdded.cs" t="Include" />
+          </e>
           <e p="Queries" t="Include">
             <e p="GetCheeseTestBase.cs" t="Include" />
             <e p="WhenThereAreCheesesInStore.cs" t="Include" />
             <e p="WhenThereIsNoCheeseInDatabase.cs" t="Include" />
           </e>
+        </e>
+        <e p="Infrastructure" t="Include">
+          <e p="class.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
