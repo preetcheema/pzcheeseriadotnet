@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Programming\pzcheeseriadotnet" t="IncludeFlat">
+      <e p=".dockerignore" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="PZCheeseria.APi" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
@@ -13,6 +14,7 @@
         <e p="Controllers" t="Include">
           <e p="CheesesController.cs" t="Include" />
         </e>
+        <e p="Dockerfile" t="Include" />
         <e p="ExtensionMethods" t="Include">
           <e p="DecimalExtensionMethods.cs" t="Include" />
         </e>
