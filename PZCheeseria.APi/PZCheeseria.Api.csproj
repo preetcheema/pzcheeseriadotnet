@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <AssemblyName>PZCheeseria.Api</AssemblyName>
         <RootNamespace>PZCheeseria.Api</RootNamespace>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
