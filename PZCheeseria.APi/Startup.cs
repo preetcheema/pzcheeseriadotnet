@@ -5,6 +5,8 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +40,7 @@ namespace PZCheeseria.Api
             services.AddControllers();
             
             ConfigureSwagger(services);
+            ConfigureApiVersioning(services);
           
             services.AddOptions();
             RegisterOptions(services, Configuration);
@@ -48,6 +51,18 @@ namespace PZCheeseria.Api
             AddMediatR(services);
             ConfigureCors(services);
             services.AddSingleton<ITimeProvider, TimeProvider>();
+            
+        }
+
+        private void ConfigureApiVersioning(IServiceCollection services)
+        {
+            services.AddApiVersioning(c =>
+            {
+                c.DefaultApiVersion = new ApiVersion(1, 0);
+                c.AssumeDefaultVersionWhenUnspecified = true;
+                c.ReportApiVersions = true;
+                c.ApiVersionReader = new HeaderApiVersionReader("X-version");
+            });
         }
 
         private static void ConfigureSwagger(IServiceCollection services)

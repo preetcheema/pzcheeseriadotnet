@@ -15,6 +15,7 @@ using PZCheeseria.BusinessLogic.Exceptions;
 namespace PZCheeseria.Api.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     public class CheesesController : ControllerBase
     {
@@ -46,6 +47,7 @@ namespace PZCheeseria.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+     
         [HttpGet("{id}")]
         public async Task<ActionResult<CheeseApiModel>> GetById(int id)
         {
@@ -59,7 +61,7 @@ namespace PZCheeseria.Api.Controllers
         /// Add new cheese item
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <remarks>Currently we do not have any authentication for Post. Given time, i would have liked to add authentication to Post</remarks>
         [HttpPost]
         public async Task<ActionResult> Post([FromForm] AddCheeseApiModel model)
         {
