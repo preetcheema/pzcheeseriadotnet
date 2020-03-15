@@ -14,6 +14,8 @@ data in database, it could simply be in an in-memory collection.
 
 ### What I would have liked to do more
 * I have not added Authentication/Authorization in the project. Ideally I would have liked to do more.
+* In addition to GET, I have implemented POST and GetById. Due to time constraint, I have not added PUT/DELETE
 * The Integration tests are not exhaustive. I have only added few of the tests to demonstrate my approach.
 * The tests are only written for BusinessLogic. Tests could also have been written at API level which would allow us to verify status codes and response etc.
 * Some of the class implementations are not exhausitively complete, for example, class ApiExceptionMiddleware in API project only catches and processes some of the exceptions.
+* Image files are being added to the /resources/images. Ideally if we were to provide functionality to add more cheeses, we could store files in external service or database
