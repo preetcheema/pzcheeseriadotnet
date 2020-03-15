@@ -28,19 +28,42 @@ namespace PZCheeseria.Api.Controllers
         /// <summary>
         /// Get all cheeses
         /// </summary>
+        /// 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CheeseApiModel>>> Get()
         {
             var interimResult = await _mediator.Send(new GetAllCheesesQuery());
+            
+            //we are assuming here that image file is already there. In production level code, we would be checking it
+            // and not really storing images in resources.
             var prependUrl = $"{Request.Scheme}://{Request.Host}/resources/images/";
             var result = interimResult.Select(m => CheeseApiModel.ConvertFrom(m, prependUrl)).ToList();
             return Ok(result);
         }
 
+        /// <summary>
+        /// Get cheese by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CheeseApiModel>> GetById(int id)
+        {
+            var interimResult = await _mediator.Send(new GetCheeseByIdQuery() {Id = id});
+            var prependUrl = $"{Request.Scheme}://{Request.Host}/resources/images/";
+            var result = CheeseApiModel.ConvertFrom(interimResult, prependUrl);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Add new cheese item
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Post([FromForm] AddCheeseApiModel model)
         {
-            //this could be built into a global filter
+            //null model check could be built into a global filter
             if (model == null)
             {
                 return BadRequest();
@@ -54,7 +77,7 @@ namespace PZCheeseria.Api.Controllers
             var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim().ToString();
 
             var command = model.ToAddCheeseCommand();
-            await _mediator.Send(command);
+             var id =await _mediator.Send(command);
 
             var fullPath = Path.Combine(pathToSave, fileName);
             var dbPath = Path.Combine(folderName, fileName);
@@ -64,7 +87,7 @@ namespace PZCheeseria.Api.Controllers
                 file.CopyTo(stream);
             }
 
-            return Ok();
+            return CreatedAtAction(nameof(GetById),new{id=id},string.Empty);
         }
 
         /// <summary>

@@ -8,6 +8,12 @@ namespace PZCheeseria.BusinessLogic.Cheeses.Commands
     {
         private readonly List<string> imageExtensions = new List<string> {"jpg", "jpeg"};
 
+        /// <summary>
+        /// Validations for AddCheeseCommand
+        /// </summary>
+        /// <param name="cheesealreadyExistsFunc"></param>
+        /// <param name="colorExistsFunc"></param>
+        /// <remarks>We could add more descriptive messages on each of the failed conditions</remarks>
         public AddCheeseCommandValidator(Func<string, bool> cheesealreadyExistsFunc, Func<string, bool> colorExistsFunc)
         {
             RuleFor(m => m.Name)

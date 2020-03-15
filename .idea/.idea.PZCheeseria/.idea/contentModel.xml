@@ -12,7 +12,6 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="CheesesController.cs" t="Include" />
-          <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="ExtensionMethods" t="Include">
           <e p="DecimalExtensionMethods.cs" t="Include" />
@@ -64,6 +63,8 @@
             <e p="CheeseModel.cs" t="Include" />
             <e p="GetAllCheeses.cs" t="Include" />
             <e p="GetAllCheesesQueryHandler.cs" t="Include" />
+            <e p="GetCheeseByIdQuery.cs" t="Include" />
+            <e p="GetCheeseByIdQueryHandler.cs" t="Include" />
           </e>
         </e>
         <e p="Exceptions" t="Include">

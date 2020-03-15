@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using PZCheeseria.BusinessLogic.Exceptions;
@@ -27,7 +28,7 @@ namespace PZCheeseria.Api.Infrastructure.Middleware
         }
 
         /// <remarks>
-        ///Currently only interpreting UnProcessableEntityException
+        ///Currently only interpreting UnProcessableEntityException and EntityNotFoundException (for GET method only)
         /// we can extend it to interpret combination of request type and exception and return appropriate status code
         /// for example, if the exception caught is EntityNotFoundException and request type is Get then we can return NotFound
         /// but if request type is Post, we can return BadRequest with appropriate details
@@ -59,6 +60,11 @@ namespace PZCheeseria.Api.Infrastructure.Middleware
 
                     var json = JsonConvert.SerializeObject(apiExceptionDetails, _jsonSettings);
                     await context.Response.WriteAsync(json);
+                    return;
+                }
+                if (ex.GetType() == typeof(EntityNotFoundException) && context.Request.Method == HttpMethods.Get)
+                {
+                    context.Response.StatusCode = (int) HttpStatusCode.NotFound;
                     return;
                 }
 

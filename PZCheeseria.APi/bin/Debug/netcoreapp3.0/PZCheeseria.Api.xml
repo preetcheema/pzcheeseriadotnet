@@ -8,6 +8,21 @@
             <summary>
             Get all cheeses
             </summary>
+            
+        </member>
+        <member name="M:PZCheeseria.Api.Controllers.CheesesController.GetById(System.Int32)">
+            <summary>
+            Get cheese by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PZCheeseria.Api.Controllers.CheesesController.Post(PZCheeseria.Api.Models.AddCheeseApiModel)">
+            <summary>
+            Add new cheese item
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
         </member>
         <member name="M:PZCheeseria.Api.Controllers.CheesesController.ValidateFile(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
@@ -20,7 +35,7 @@
         </member>
         <member name="M:PZCheeseria.Api.Infrastructure.Middleware.ApiExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
              <remarks>
-            Currently only interpreting UnProcessableEntityException
+            Currently only interpreting UnProcessableEntityException and EntityNotFoundException (for GET method only)
              we can extend it to interpret combination of request type and exception and return appropriate status code
              for example, if the exception caught is EntityNotFoundException and request type is Get then we can return NotFound
              but if request type is Post, we can return BadRequest with appropriate details

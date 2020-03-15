@@ -1,26 +1,25 @@
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using PZCheeseria.BusinessLogic.Exceptions;
 using PZCheeseria.Persistence;
 
 namespace PZCheeseria.BusinessLogic.Cheeses.Queries
 {
-    public class GetAllCheesesQueryHandler : IRequestHandler<GetAllCheesesQuery, IEnumerable<CheeseModel>>
+    public class GetCheeseByIdQueryHandler : IRequestHandler<GetCheeseByIdQuery, CheeseModel>
     {
         private readonly PZCheeseriaContext _context;
 
-        public GetAllCheesesQueryHandler(PZCheeseriaContext context)
+        public GetCheeseByIdQueryHandler(PZCheeseriaContext context)
         {
             _context = context;
         }
 
-        public async Task<IEnumerable<CheeseModel>> Handle(GetAllCheesesQuery request, CancellationToken cancellationToken)
+        public async Task<CheeseModel> Handle(GetCheeseByIdQuery request, CancellationToken cancellationToken)
         {
-            var result = await _context.Cheeses.Select(m => new CheeseModel
+            var result = await _context.Cheeses.Where(m => m.Id == request.Id).Select(m => new CheeseModel
             {
                 Id = m.Id,
                 Name = m.Name,
@@ -28,7 +27,11 @@ namespace PZCheeseria.BusinessLogic.Cheeses.Queries
                 PricePerKilo = m.PricePerKilo,
                 ImageName = m.ImageName,
                 Colour = m.Colour.Colour
-            }).ToListAsync(cancellationToken: cancellationToken);
+            }).SingleOrDefaultAsync(cancellationToken: cancellationToken);
+
+
+            if (result == null) throw new EntityNotFoundException(nameof(CheeseModel), request.Id);
+
             return result;
         }
     }
